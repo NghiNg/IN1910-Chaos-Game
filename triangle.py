@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 c = [(0,0),(0,1),(np.sqrt(3)/2,1./2)]
 x,y,z = c
 '''Create c triangle, plots manually'''
-#plt.scatter(*zip(*c))
-#plt.axis('equal')
+plt.scatter(*zip(*c))
+plt.axis('equal')
 #plt.show()
 
 #Task 1.b
@@ -56,10 +56,17 @@ plt.show()
 #Task 1.c
 def halfling(n):
     X = np.array(point())
-    C = np.array(c[np.random.randint(3)])
+    #C = np.array(c[np.random.randint(3)])
     for i in range(6):
-        X = (X + C)/2
+        X = (X + np.array(c[np.random.randint(3)]))/2
     Xlist = [X]
     for i in range(n-1):
-        Xlist.append((Xlist[i] + C)/2)
+        Xlist.append((Xlist[i] + np.array(c[np.random.randint(3)]))/2)
     return Xlist
+Hermoine = halfling(10000)
+
+#Task 1.d: Plotting the points
+plt.scatter(*zip(*Hermoine), s = 0.2, color = 'red')
+plt.axis('off')
+marker = '.'
+plt.show()
