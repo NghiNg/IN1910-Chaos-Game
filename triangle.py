@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Task 1.a
-c = [[0,0],[0,1],[np.sqrt(3)/2,1./2]]
+c = [(0,0),(0,1),(np.sqrt(3)/2,1./2)]
 x,y,z = c
 '''Create c triangle, plots manually'''
-plt.scatter([0,0,np.sqrt(3)/2],[0,1,1./2])
-plt.axis('equal')
-plt.show()
+#plt.scatter(*zip(*c))
+#plt.axis('equal')
+#plt.show()
 
 #Task 1.b
 def r(n):
@@ -35,7 +35,7 @@ def point():
     for i in cc:
         x += i[0]
         y += i[1]
-        point = [x,y]
+        point = (x,y)
     return point
 
 def points(n):
@@ -49,9 +49,18 @@ def points(n):
 x = []
 y = []
 P = points(1000)
-for i in range(1000):
-    x.append(P[i][0])
-    y.append(P[i][1])
-plt.scatter(x,y)
+plt.scatter(*zip(*P))
 plt.show()
+'''
+'''
+#Task 1.c
+def stuff(n):
+    X0 = point()
+    C = c[np.random.randint(3)]
+    X =0
+    for i in range(2):
+
+    X = (X0 + C)/2
+    for i in range(n):
+        X =
 '''
