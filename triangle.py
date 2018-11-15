@@ -87,3 +87,26 @@ plt.scatter(*zip(*green), s = 0.1, color = 'green')
 plt.axis('off')
 marker = '.'
 plt.show()
+
+
+def ironic(n):
+    C0 = np.array(([1,0,0],[0,1,0],[0,0,1]))
+    C = np.random.randint(3)
+    arrrgh = np.array([np.random.random(), np.random.random(), np.random.random()])
+    ron = []
+    ron.append((C0[C] + arrrgh)/2)
+    for i in range(n):
+            arrrgh = np.array([np.random.random(),
+            np.random.random(), np.random.random()])
+            ron.append((ron[i] + arrrgh)/2)
+    return ron
+
+Ron = ironic(10000)
+
+plt.scatter(*zip(*Hermoine), c = Ron, s = 0.1)
+#plt.scatter(*zip(*blue),c=ron, s = 0.1, color = 'blue')
+#plt.scatter(*zip(*green),c=ron, s = 0.1, color = 'green')
+plt.axis('off')
+plt.axis('equal')
+marker = '.'
+plt.show()
