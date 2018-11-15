@@ -52,21 +52,38 @@ P = points(1000)
 plt.scatter(*zip(*P))
 plt.show()
 '''
-
 #Task 1.c
+#halfling[n] = (x,y,color == 2)
 def halfling(n):
     X = np.array(point())
-    #C = np.array(c[np.random.randint(3)])
     for i in range(6):
-        X = (X + np.array(c[np.random.randint(3)]))/2
+        C = np.random.randint(3)
+        X = (X + np.array(c[C]))/2
     Xlist = [X]
+    color = [C]
     for i in range(n-1):
-        Xlist.append((Xlist[i] + np.array(c[np.random.randint(3)]))/2)
-    return Xlist
-Hermoine = halfling(10000)
+        C = np.random.randint(3)    #Saves the random indice
+        color.append(C)
+        Xlist.append((Xlist[i] + np.array(c[C]))/2)
+    return Xlist, color
 
 #Task 1.d: Plotting the points
-plt.scatter(*zip(*Hermoine), s = 0.2, color = 'red')
+#Task 1.e: Adding Colour
+Hermoine, color = halfling(10000)
+red = []
+blue = []
+green = []
+for i in range(len(color)):
+    if color[i] == 0:
+        red.append(Hermoine[i])
+    elif color[i] == 1:
+        blue.append(Hermoine[i])
+    else:
+        green.append(Hermoine[i])
+
+plt.scatter(*zip(*red), s = 0.1, color = 'red')
+plt.scatter(*zip(*blue), s = 0.1, color = 'blue')
+plt.scatter(*zip(*green), s = 0.1, color = 'green')
 plt.axis('off')
 marker = '.'
 plt.show()
