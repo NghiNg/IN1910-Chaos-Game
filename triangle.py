@@ -52,15 +52,14 @@ P = points(1000)
 plt.scatter(*zip(*P))
 plt.show()
 '''
-'''
-#Task 1.c
-def stuff(n):
-    X0 = point()
-    C = c[np.random.randint(3)]
-    X =0
-    for i in range(2):
 
-    X = (X0 + C)/2
-    for i in range(n):
-        X =
-'''
+#Task 1.c
+def halfling(n):
+    X = np.array(point())
+    C = np.array(c[np.random.randint(3)])
+    for i in range(6):
+        X = (X + C)/2
+    Xlist = [X]
+    for i in range(n-1):
+        Xlist.append((Xlist[i] + C)/2)
+    return Xlist
