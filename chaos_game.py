@@ -51,10 +51,11 @@ class ChaosGame(object):
         return point
 
     def iterate(self, steps, discard = 5):
-        X = self._starting_point()
+        X = np.array(self._starting_point())
+        self.gone = np.array(self.gone)
         for i in range(discard):
             C = np.random.randint(self.n)
-            X = self.r*self.flies[i] + (1.-self.r)*self.gone[C]
+            X = self.r*X + (1.-self.r)*self.gone[C]
         self.flies = [X]
         for i in range(steps-1):
             C = np.random.randint(self.n)    #Saves the random indice
