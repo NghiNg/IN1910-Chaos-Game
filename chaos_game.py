@@ -21,6 +21,6 @@ class ChaosGame(object):
         corners = []
         for i in range(self.n-1):
             theatre.append(theatre[i]+theta)
-        for i in range(self.n):
-            corners.append([np.sin(theatre[i]), np.cos(theatre[i])])
+        for i in theatre:
+            corners.append([np.sin(i), np.cos(i)])
 a = ChaosGame(4,0.72828)
