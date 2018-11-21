@@ -52,8 +52,23 @@ class ChaosGame(object):
             point = (x,y)
         return point
 
+    def iterate(self, steps, discard = 5):
+        X = self._starting_point()
+        for i in range(discard):
+            C = np.random.randint(self.n)
+            X = (X + np.array(self.gone[C]))/2
+        self.Xlist = [X]
+        for i in range(steps-1):
+            C = np.random.randint(self.n)    #Saves the random indice
+            self.Xlist.append((self.Xlist[i] + np.array(self.gone[C]))/2)
+        return self.Xlist
+
 a = ChaosGame(5)
+'''
 for i in range(1000):
     x,y = a._starting_point()
     plt.scatter(x,y)
-a.plot_ngon()
+'''
+print(a.iterate(10))
+print(len(a.iterate(10)))
+#a.plot_ngon()
