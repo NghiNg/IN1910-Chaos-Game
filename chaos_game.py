@@ -24,22 +24,36 @@ class ChaosGame(object):
             theatre.append(theatre[i] + self.theta)
         for i in theatre:
             self.corners.append([np.sin(i), np.cos(i)])
+        return self.corners
     def plot_ngon(self):
         plt.scatter(*zip(*self.corners))
         plt.axis('equal')
         plt.show()
         plt.close()
 
-a = ChaosGame(3)
-b = ChaosGame(4)
-c = ChaosGame(5)
-d = ChaosGame(6)
-e = ChaosGame(7)
-f = ChaosGame(100)
+    def _starting_point(self):
+        '''Creates a random point inside the n-gon'''
+        r = []
+        for i in range(self.n):
+            r.append(np.random.random())
+        rsum = sum(r)
+        for i in range(self.n):
+            r[i] /= rsum
+        a = []
+        x = 0
+        y = 0
+        goner = np.copy(self.gone)
+        for i in range(self.n):
+            for j in range(2):
+                goner[i][j] = r[i]*self.gone[i][j]
+        for i in goner:
+            x += i[0]
+            y += i[1]
+            point = (x,y)
+        return point
 
+a = ChaosGame(5)
+for i in range(1000):
+    x,y = a._starting_point()
+    plt.scatter(x,y)
 a.plot_ngon()
-b.plot_ngon()
-c.plot_ngon()
-d.plot_ngon()
-e.plot_ngon()
-f.plot_ngon()
