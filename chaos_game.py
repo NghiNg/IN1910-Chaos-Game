@@ -28,8 +28,6 @@ class ChaosGame(object):
     def plot_ngon(self):
         plt.scatter(*zip(*self.corners))
         plt.axis('equal')
-        plt.show()
-        plt.close()
 
     def _starting_point(self):
         '''Creates a random point inside the n-gon'''
@@ -56,19 +54,23 @@ class ChaosGame(object):
         X = self._starting_point()
         for i in range(discard):
             C = np.random.randint(self.n)
-            X = (X + np.array(self.gone[C]))/2
-        self.Xlist = [X]
+            X = self.r*self.flies[i] + (1.-self.r)*self.gone[C]
+        self.flies = [X]
         for i in range(steps-1):
             C = np.random.randint(self.n)    #Saves the random indice
-            self.Xlist.append((self.Xlist[i] + np.array(self.gone[C]))/2)
-        return self.Xlist
+            self.flies.append(self.r*self.flies[i] + (1.-self.r)*self.gone[C])
+        return self.flies
 
-a = ChaosGame(5)
+    def show(self):
+        plt.scatter(*zip(*self.flies), color = 'black')
+        self.plot_ngon()
+        plt.axis('equal')
+
+a = ChaosGame(3,0.5)
 '''
 for i in range(1000):
     x,y = a._starting_point()
     plt.scatter(x,y)
 '''
-print(a.iterate(10))
-print(len(a.iterate(10)))
-#a.plot_ngon()
+a.iterate(10)
+a.show()
