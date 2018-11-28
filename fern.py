@@ -1,6 +1,6 @@
 # Part C: Barnsely Ferns
-
 import numpy as np
+import matplotlib.pyplot as plt
 #3a: Affine Functions
 
 class AffineTransform(object):
@@ -43,8 +43,15 @@ def randfunc():
 X = [0,0]
 def iterate(X, n):
     '''Iterates the AffineTransform n times, currently prints out each point.'''
+    Xlist = [X]
     for i in range(n):
         a = randfunc()
         X = a.__call__(X)
-        print(X)
-iterate(X, 5)
+        Xlist.append(X)
+    return(Xlist)
+Xlist = iterate(X, 50000)
+
+#3e: Plotting the Fern
+plt.scatter(*zip(*Xlist), color = 'g', s = 0.8)
+plt.axis('off')
+plt.savefig('figures/barnsley_fern', dpi = 300, transparent = True)
