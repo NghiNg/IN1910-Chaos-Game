@@ -73,6 +73,7 @@ class ChaosGame(object):
             a = outfile.split('.')
             if a[-1] != 'png':
                 raise ValueError('Has to be .png file.')
+        outfile = 'figures/' + outfile
         plt.savefig(outfile, dpi = 300, transparent = True)
         plt.close()
 if __name__ == '__main__':
