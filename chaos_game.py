@@ -67,11 +67,19 @@ class ChaosGame(object):
         self.plot_ngon()
         plt.axis('equal')
 
+    def savepng(self,outfile):
+        self.show()
+        if '.' in outfile:
+            a = outfile.split('.')
+            if a[-1] != 'png':
+                raise ValueError('Has to be .png file.')
+        plt.savefig(outfile, dpi = 300, transparent = True)
+
 a = ChaosGame(3,0.5)
 '''
 for i in range(1000):
     x,y = a._starting_point()
     plt.scatter(x,y)
 '''
-a.iterate(10)
-a.show()
+a.iterate(10)   #Sometimes plots all on one side of the triangle, is something wrong?
+a.savepng('test')
