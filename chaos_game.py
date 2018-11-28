@@ -66,6 +66,7 @@ class ChaosGame(object):
         plt.scatter(*zip(*self.flies), color = 'black')
         self.plot_ngon()
         plt.axis('equal')
+        plt.close()
 
     def savepng(self,outfile):
         self.show()
