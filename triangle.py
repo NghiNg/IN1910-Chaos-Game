@@ -15,11 +15,8 @@ def r(n):
     r = []
     for i in range(n):
         r.append(np.random.random())
-    sum = 0
-    for i in r:
-        sum += i
     for i in range(n):
-        r[i] = r[i]/sum
+        r[i] = r[i]/sum(r)
     return r
 
 def point():
