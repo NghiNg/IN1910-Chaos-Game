@@ -12,7 +12,8 @@ class AffineTransform(object):
         self.e = e
         self.f = f
 
-    def __call__(self,x,y):
+    def __call__(self,X):
+        x,y = X
         point = [self.a*x + self.b*y + self.e, self.c*x + self.d*y + self.f]
         return point
 
@@ -28,12 +29,22 @@ p1 = 0.01
 p2 = 0.85
 p3 = 0.07
 p4 = 0.07
-probabilities = [p1,p2,p3,p4]
+#probabilities = [p1,p2,p3,p4]      #Just to test sum
 #print(sum(probabilities))
 p_cumulative = [[0,0.01], [1,0.86], [2,0.93], [3,1]]
-print(functions)
+def randfunc():
+    '''This will pick a random function.'''
+    r = np.random.random()
+    for j,p in p_cumulative:
+        if r < p:
+            return(functions[j])
 
-r = np.random.random()
-for j,p in p_cumulative:
-    if r < p:
-        return(functions[j])
+#3d: Iterating the Fern
+X = [0,0]
+def iterate(X, n):
+    '''Iterates the AffineTransform n times, currently prints out each point.'''
+    for i in range(n):
+        a = randfunc()
+        X = a.__call__(X)
+        print(X)
+iterate(X, 5)
