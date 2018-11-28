@@ -66,7 +66,6 @@ class ChaosGame(object):
         plt.scatter(*zip(*self.flies), color = 'black')
         self.plot_ngon()
         plt.axis('equal')
-        plt.close()
 
     def savepng(self,outfile):
         self.show()
@@ -75,7 +74,7 @@ class ChaosGame(object):
             if a[-1] != 'png':
                 raise ValueError('Has to be .png file.')
         plt.savefig(outfile, dpi = 300, transparent = True)
-
+        plt.close()
 if __name__ == '__main__':
     a = ChaosGame(3,0.5)
     '''
