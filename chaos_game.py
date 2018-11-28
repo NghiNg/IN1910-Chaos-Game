@@ -83,4 +83,16 @@ if __name__ == '__main__':
         plt.scatter(x,y)
     '''
     a.iterate(10)   #Sometimes plots all on one side of the triangle, is something wrong?
-    a.savepng('test')
+    a.savepng('chaos1')
+    b = ChaosGame(4,1/3)
+    b.iterate(10)
+    b.savepng('chaos2')
+    c = ChaosGame(5,1/3)
+    c.iterate(10)
+    c.savepng('chaos3')
+    d = ChaosGame(5,3/8)
+    d.iterate(10)
+    d.savepng('chaos4')
+    e = ChaosGame(6,1/3)
+    e.iterate(10)
+    e.savepng('chaos5')
