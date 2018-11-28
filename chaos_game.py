@@ -75,11 +75,12 @@ class ChaosGame(object):
                 raise ValueError('Has to be .png file.')
         plt.savefig(outfile, dpi = 300, transparent = True)
 
-a = ChaosGame(3,0.5)
-'''
-for i in range(1000):
-    x,y = a._starting_point()
-    plt.scatter(x,y)
-'''
-a.iterate(10)   #Sometimes plots all on one side of the triangle, is something wrong?
-a.savepng('test')
+if __name__ == '__main__':
+    a = ChaosGame(3,0.5)
+    '''
+    for i in range(1000):
+        x,y = a._starting_point()
+        plt.scatter(x,y)
+    '''
+    a.iterate(10)   #Sometimes plots all on one side of the triangle, is something wrong?
+    a.savepng('test')
