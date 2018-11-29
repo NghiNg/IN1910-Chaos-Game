@@ -4,14 +4,14 @@ https://github.uio.no/IN1910/project3_mkkaurin_bdnguye
 
 The repository contains:
 
-triangle.py
+- triangle.py
 
-chaos_game.py
+- chaos_game.py
 
-test_chaos_game.py
+- test_chaos_game.py
 
-fern.py
+- fern.py
 
-figures (folder)
+- figures (folder)
 
-- 6 images, one is a fern.
+  - 6 images, one is a fern.
