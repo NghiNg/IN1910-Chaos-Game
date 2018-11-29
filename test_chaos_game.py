@@ -1,15 +1,15 @@
-import nose.tool0s as nt
+import nose.tools as nt
 from chaos_game import ChaosGame
-import nmupy as np
+import numpy as np
 
 
-def test_constructor():
+def test_a():
     t = ChaosGame(3,-2.71828)
     assert isinstance(t, ChaosGame)
     t2 = ChaosGame(1,0.6)
     assert isinstance(t2, ChaosGame)
 
-def test_iterate():
+def test_b():
     t = ChaosGame(4,0.99999999)
     assert(t != None)
 
@@ -23,3 +23,11 @@ def test_d():
     theta2 = 2*np.pi/16
     tol = 1E-15
     assert((t.theta-theta2) < tol)
+
+
+'''
+In test a we are purposefully testing to raise an error by
+construcing an object of type ChaosGame with an r that is
+less than 0.
+
+'''
