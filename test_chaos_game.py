@@ -4,9 +4,10 @@ import numpy as np
 
 
 def test_a():
-    t = ChaosGame(3,-2.71828)
-    assert isinstance(t, ChaosGame)
-    t2 = ChaosGame(1,0.6)
+    nt.assert_raises(Exception, ChaosGame, 3, -2.71828)
+
+def test_a2():
+    t2 = ChaosGame(4,0.6)
     assert isinstance(t2, ChaosGame)
 
 def test_b():
@@ -23,11 +24,3 @@ def test_d():
     theta2 = 2*np.pi/16
     tol = 1E-15
     assert((t.theta-theta2) < tol)
-
-
-'''
-In test a we are purposefully testing to raise an error by
-construcing an object of type ChaosGame with an r that is
-less than 0.
-
-'''
