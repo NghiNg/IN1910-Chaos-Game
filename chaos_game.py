@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class ChaosGame(object):
-
     def __init__(self, n, r = 0.5):
         if isinstance(n, int) and n >= 3:
             self.n = n
@@ -13,8 +12,9 @@ class ChaosGame(object):
         else:
             raise Exception('r has to be a decimal between 0 and 1')
         self.gone = self._generate_ngon()
+
     def __call__(self):
-        print('test')
+        pass
 
     def _generate_ngon(self):
         self.theta = 2*np.pi/self.n
@@ -25,6 +25,7 @@ class ChaosGame(object):
         for i in theatre:
             self.corners.append([np.sin(i), np.cos(i)])
         return self.corners
+
     def plot_ngon(self):
         plt.scatter(*zip(*self.corners))
         plt.axis('equal')
@@ -58,7 +59,7 @@ class ChaosGame(object):
             X = self.r*X + (1.-self.r)*self.gone[C]
         self.flies = [X]
         for i in range(steps-1):
-            C = np.random.randint(self.n)    #Saves the random indice
+            C = np.random.randint(self.n)    #Saves the random indice.
             self.flies.append(self.r*self.flies[i] + (1.-self.r)*self.gone[C])
         return self.flies
 
@@ -76,6 +77,7 @@ class ChaosGame(object):
         outfile = 'figures/' + outfile
         plt.savefig(outfile, dpi = 300, transparent = True)
         plt.close()
+
 if __name__ == '__main__':
     a = ChaosGame(3,0.5)
     '''
